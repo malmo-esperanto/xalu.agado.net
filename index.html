@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Unikodigu aŭ iksigu esperantajn tekstojn</title> 
+
+<script>
+
+var $ = function( id ) { return document.getElementById( id ); };
+
+function x2u()
+{
+	$('data').value = $('data').value
+		.replace(/U[xX]/g, "Ŭ")
+		.replace(/C[xX]/g, "Ĉ")
+		.replace(/G[xX]/g, "Ĝ")
+		.replace(/H[xX]/g, "Ĥ")
+		.replace(/J[xX]/g, "Ĵ")
+		.replace(/S[xX]/g, "Ŝ")
+		.replace(/ux/g, "ŭ")
+		.replace(/cx/g, "ĉ")
+		.replace(/gx/g, "ĝ")
+		.replace(/hx/g, "ĥ")
+		.replace(/jx/g, "ĵ")
+		.replace(/sx/g, "ŝ");
+
+	fixfocus();
+}
+
+function u2x()
+{
+	$('data').value = $('data').value
+		.replace(/Ŭ/g, "Ux")
+		.replace(/Ĉ/g, "Cx")
+		.replace(/Ĝ/g, "Gx")
+		.replace(/Ĥ/g, "Hx")
+		.replace(/Ĵ/g, "Jx")
+		.replace(/Ŝ/g, "Sx")
+		.replace(/ŭ/g, "ux")
+		.replace(/ĉ/g, "cx")
+		.replace(/ĝ/g, "gx")
+		.replace(/ĥ/g, "hx")
+		.replace(/ĵ/g, "jx")
+		.replace(/ŝ/g, "sx");
+
+	fixfocus();
+}
+
+function fixfocus() 
+{
+	$('data').focus();
+	$('data').select();
+}
+
+
+function clearData() 
+{ 
+	$('data').value = "";
+	fixfocus();
+}
+
+</script>
+
+<style>
+	body 
+	{
+		background-color: #cfc;
+	}
+	textarea 
+	{
+		width: 100%;
+	}
+	button
+	{
+		float: right;
+	}
+</style>
+
+</head>
+
+<body> 
+	<p><button onclick="x2u()">cx → ĉ</button>
+	<button onclick="u2x()">ĉ → cx</button>
+	<button onclick="clearData()">malplenigu</button></p>
+	<p><textarea autocorrect="off" autocapitalize="off" spellcheck="false" rows="30" cols="83" id="data" autofocus></textarea></p>
+</body>
+
+</html>
